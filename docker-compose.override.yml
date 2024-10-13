@@ -1,0 +1,9 @@
+services:
+  ticketing.seq:
+     volumes:
+       - ./.containers/seq:/data
+     environment:
+       - ACCEPT_EULA=Y
+     ports:
+       - 5341:5341
+       - 9090:80

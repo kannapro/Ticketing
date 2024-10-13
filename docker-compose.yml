@@ -1,0 +1,4 @@
+services:
+  ticketing.seq:
+    image: datalust/seq:latest
+    container_name: Ticketing.Seq
