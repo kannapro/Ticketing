@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TM.Application\TM.Application.csproj" />
+    <ProjectReference Include="..\TM.Infrastructure\TM.Infrastructure.csproj" />
+    <ProjectReference Include="..\TM.Persistence\TM.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
