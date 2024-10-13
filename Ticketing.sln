@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0EE34831-6E1D-4880-B36D-1EDF92275C6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TicketManagement", "TicketManagement", "{D8463AB7-854B-4C67-B1B7-5CDA8F6376B5}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TM.Domain", "src\TicketManagement\TM.Domain\TM.Domain.csproj", "{A10CA1A2-95C2-46E4-B89F-7881D488858A}"
 EndProject
