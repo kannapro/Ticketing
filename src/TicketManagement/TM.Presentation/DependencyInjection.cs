@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using TM.Application;
 using TM.Infrastructure;
 using TM.Persistence;
@@ -30,6 +32,11 @@ public static class DependencyInjection
 
         app.UseHttpsRedirection();
 
-        app.MapGet("/", () => "Welcome to CodeDaze API! Happy Coding");
+        app.MapGet("/", (ILoggerFactory loggerFactory) => {
+            var logger = loggerFactory.CreateLogger("Start");
+            logger.LogInformation("Request Received");
+            return Results.Ok("Welcome to CodeDaze API! Happy Coding");
+        });
+
     }
 }
