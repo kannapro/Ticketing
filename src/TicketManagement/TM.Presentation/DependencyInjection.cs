@@ -32,11 +32,7 @@ public static class DependencyInjection
 
         app.UseHttpsRedirection();
 
-        app.MapGet("/", (ILoggerFactory loggerFactory) => {
-            var logger = loggerFactory.CreateLogger("Start");
-            logger.LogInformation("Request Received");
-            return Results.Ok("Welcome to CodeDaze API! Happy Coding");
-        });
+        app.MapEndpoints();
 
     }
 }
