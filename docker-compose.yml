@@ -2,3 +2,6 @@ services:
   ticketing.seq:
     image: datalust/seq:latest
     container_name: Ticketing.Seq
+  ticketing.postgres:
+    image: postgres:latest-alpine
+    container_name: Ticketing.Postgres

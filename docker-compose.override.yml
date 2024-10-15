@@ -7,3 +7,15 @@ services:
      ports:
        - 5341:5341
        - 9090:80
+  ticketing.postgres:
+    restart: always
+    environment:
+      - POSTGRES_USER=ticketing
+      - POSTGRES_PASSWORD=MySecurePa$$w0rd
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+  
