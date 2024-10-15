@@ -1,24 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
-using TM.Presentation.DTO;
+using TM.Domain.Entities;
+using TM.Domain.Interfaces;
 
 namespace TM.Presentation.Handlers;
 
 public static class TicketEndpointHandlers
 {
-    public static IResult HandleGetTicket(int id)
+    public static async Task<IResult> HandleGetTicket(string id,IUnitOfWork _work, CancellationToken cancellationToken=default)
     {
-        return Results.Ok($"Welcome to Code Daze! 😀, Ticket booked {id}");
+        var ticket=await _work.tickets.GetAsync(id, cancellationToken);
+        return Results.Ok(ticket);
     }
-    public static IResult HandleBookTicket(Ticket request)
+    public static async Task<IResult> HandleBookTicket(Ticket request, IUnitOfWork _work, CancellationToken cancellationToken = default)
     {
-        return Results.Ok(new { message = "Welcome to Code Daze! 😀, Ticket booking received", data=request });
+        var ticket = await _work.tickets.AddAsync(request, cancellationToken);
+        return Results.Ok(ticket);
     }
-    public static IResult HandleUpdate(int id, Ticket request)
+    public static async Task<IResult> HandleUpdate(string id, Ticket request, IUnitOfWork _work, CancellationToken cancellationToken = default)
     {
-        return Results.Ok(new { message = $"Welcome to Code Daze! 😀, Ticket booking updated {id}", data = request });
+        var ticket = await _work.tickets.UpdateAsync(id, request, cancellationToken);
+        return Results.Ok(ticket);
     }
-    public static IResult HandleCancelticket(int id)
+    public static async Task<IResult> HandleCancelticket(string id, IUnitOfWork _work, CancellationToken cancellationToken = default)
     {
-        return Results.Ok($"Welcome to Code Daze! 😀, Ticket booking canceled {id}");
+        await _work.tickets.DeleteAsync(id, cancellationToken);
+        return Results.Ok();
     }
 }
